@@ -173,10 +173,12 @@ const deleteCard = async (req, res) => {
             })
         }
 
-        const file = cardDeleted.image
-        const filePath = './uploads/avatars/' + file
+        if (cardDeleted.image !== 'image.png') {
+            const file = cardDeleted.image
+            const filePath = './uploads/avatars/' + file
 
-        fs.unlinkSync(filePath)
+            fs.unlinkSync(filePath)
+        }
 
         return res.status(200).json({
             status: 'success',
