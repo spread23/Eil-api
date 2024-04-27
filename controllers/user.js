@@ -79,16 +79,6 @@ const login = async (req, res) => {
     }
 
     try {
-        validate(params)
-    } catch (error) {
-        return res.status(500).json({
-            status: 'error',
-            message: 'Error en la validacion de datos',
-            error: error.message
-        })
-    }
-
-    try {
 
         const userFound = await User.findOne({
             email: params.email
