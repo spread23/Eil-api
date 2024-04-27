@@ -92,7 +92,7 @@ const login = async (req, res) => {
         }
 
         const pwd = bcrypt.compare(params.password, userFound.password)
-        if (!pwd) res.status(400).json({ status: 'error', message: 'Las contraseñas no coinciden' })
+        if (!pwd) return res.status(400).json({ status: 'error', message: 'Las contraseñas no coinciden' })
         
         const token = createToken(userFound)
 
